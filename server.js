@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
+const todoRoutes = require('./routes/todoRoutes');
+
 
 const app = express();
 const port = 4000;
@@ -10,7 +13,8 @@ const port = 4000;
 app.use(bodyParser.json());
 
 // API routes
-app.use('/api', require('./routes/authRoutes'));
+app.use('/api', authRoutes);
+app.use('/api', todoRoutes);
 
 // Start the server
 app.listen(port, () => {
